@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      CITES
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">  
+  <ion-list *ngFor="let quote of citas">
+      <ion-item>
+          <img [src]="quote.image" width="20%">
+        <ion-label>
+          <h2>{{ quote.quote }}</h2>
+          <h3>{{ quote.by }}</h3>
+          <!--p-- *ngFor="let character of quote.character" >
+            {{ character.name }}
+          </!--p-->
+        </ion-label>
+      </ion-item>
+  </ion-list>
+</ion-content>

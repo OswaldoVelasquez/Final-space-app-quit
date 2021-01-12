@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>EPISODES</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let episode of episodes">
+    <ion-item (click)="goEpisode(episode.id)">
+      <ion-avatar slot="start">
+        <img [src]="episode.img_url">
+      </ion-avatar>
+      <ion-label>
+        <h2> {{ episode.name }}</h2>
+        <h3>  {{ episode.air_date }} </h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

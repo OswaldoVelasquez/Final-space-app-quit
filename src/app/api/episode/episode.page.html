@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="episodes"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ episode.name }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="spinner" *ngIf="!loadReady">
+    <ion-progress-bar value="0.25" buffer="0.5"></ion-progress-bar>
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    <ion-progress-bar type="indeterminate" reversed="true"></ion-progress-bar>
+  </div>
+  <div *ngIf="loadReady">
+    <ion-card>
+      <ion-card-header>
+        <div class="ion-text-center">
+          <img [src]="episode.img_url" width="100%">
+          <ion-card-subtitle> {{episode.director}} </ion-card-subtitle>
+          <ion-card-title>{{episode.name}}</ion-card-title>
+        </div>
+      </ion-card-header>
+
+      <ion-card-content> 
+        <p><b>Air Date: </b> {{episode.air_date}} </p>
+        <p><b>Writer: </b> {{episode.writer}} </p>
+      </ion-card-content>
+    </ion-card>
+
+    <h3 class="ion-margin">CHARACTERS</h3>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let character of episode.characters">
+          <ion-card (click)="goCharacter(character.id)">
+            <img [src]="character.img_url" width="100%">
+            <ion-card-content>
+              <p> {{character.name}} </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>        
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
